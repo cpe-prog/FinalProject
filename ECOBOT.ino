@@ -1,7 +1,12 @@
+
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
-#include <ESP8266WebServer.h>
+#include <ESP8266WebServer.h> 
+#include <Firebase.h>
+#define FIREBASE_HOST "ecobotproject-9586f-default-rtdb.firebaseio.com"         
+#define FIREBASE_AUTH "DEOZcC6qIokR8osdddXq0TwL868SzVhv15PmOSjo"   
 #include <Servo.h>
+
 
 const char* ssid = "realme C12";
 const char* password = "00000000";
@@ -14,6 +19,11 @@ Servo servo2;
 #define relay1  D2
 #define relay2  D0
 #define relay3  D1
+
+int value1;
+int value2;
+int value3;
+int value4;
 
 void setup() {
   Serial.begin(115200);
