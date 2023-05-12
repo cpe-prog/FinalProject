@@ -55,14 +55,8 @@ void loop() {
   else if (command == "B") UPON();
   else if (command == "C") DOWNON();
   else if (command == "D") off();
-  else if (command != "S1") {
-    int servo1Value = map(command.toInt(), 0, 100, 0, 180); 
-    servo1.write(servo1Value); 
-  }
-  else if (command != "S2") {
-    int servo2Value = map(command.toInt(), 0, 100, 0, 180); 
-    servo2.write(servo2Value);
-  }
+  else if (command == "S1") servoOne(); 
+  else if (command == "S2") servoTwo(); 
 
   server.handleClient();
 
@@ -110,4 +104,14 @@ void off() {
   digitalWrite(relay3, HIGH);
    digitalWrite(LED_BUILTIN, LOW); 
    delay(5);
+}
+
+void servoOne(){
+    int servo1Value = map(command.toInt(), 0, 1023, 0, 180);
+    servo1.write(servo1Value); 
+}
+
+void servoTwo(){
+    int servo2Value = map(command.toInt(), 0, 1023, 0, 180); 
+    servo2.write(servo2Value);
 }
